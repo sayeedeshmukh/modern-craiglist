@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeoList - Modern Classifieds Dashboard</title>
+    <meta name="description" content="A futuristic, Gen Z-inspired classifieds platform with stunning visuals and cutting-edge UI/UX">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/ScrollTrigger.min.js"></script>
+</head>
+<body>
+    <!-- Custom Cursor -->
+    <div class="custom-cursor" id="customCursor"></div>
+    <div class="cursor-trail" id="cursorTrail"></div>
+    
+    <!-- Background Animation -->
+    <div class="background-animation" id="backgroundAnimation"></div>
+    
+    <!-- Navigation -->
+    <nav class="navbar glass-nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h1 class="logo-text">NeoList</h1>
+                <div class="logo-glow"></div>
+            </div>
+            
+            <div class="nav-menu" id="navMenu">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#listings" class="nav-link">Listings</a>
+                <a href="#post" class="nav-link">Post Ad</a>
+                <a href="#profile" class="nav-link">Profile</a>
+            </div>
+            
+            <div class="nav-controls">
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section id="home" class="hero-section">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <h1 class="hero-title">
+                        <span class="title-line">Discover</span>
+                        <span class="title-line">Amazing</span>
+                        <span class="title-line">Deals</span>
+                    </h1>
+                    <p class="hero-subtitle">The future of classifieds is here. Buy, sell, and connect in style.</p>
+                    
+                    <!-- Search Bar -->
+                    <div class="search-container">
+                        <div class="search-bar glass-card">
+                            <i class="fas fa-search search-icon"></i>
+                            <input type="text" placeholder="What are you looking for?" class="search-input" id="searchInput">
+                            <button class="search-btn">
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                        <div class="search-suggestions" id="searchSuggestions"></div>
+                    </div>
+                    
+                    <!-- Category Grid -->
+                    <div class="category-grid">
+                        <div class="category-card" data-category="electronics">
+                            <div class="category-icon">
+                                <i class="fas fa-laptop"></i>
+                            </div>
+                            <span>Electronics</span>
+                        </div>
+                        <div class="category-card" data-category="fashion">
+                            <div class="category-icon">
+                                <i class="fas fa-tshirt"></i>
+                            </div>
+                            <span>Fashion</span>
+                        </div>
+                        <div class="category-card" data-category="vehicles">
+                            <div class="category-icon">
+                                <i class="fas fa-car"></i>
+                            </div>
+                            <span>Vehicles</span>
+                        </div>
+                        <div class="category-card" data-category="real-estate">
+                            <div class="category-icon">
+                                <i class="fas fa-home"></i>
+                            </div>
+                            <span>Real Estate</span>
+                        </div>
+                        <div class="category-card" data-category="jobs">
+                            <div class="category-icon">
+                                <i class="fas fa-briefcase"></i>
+                            </div>
+                            <span>Jobs</span>
+                        </div>
+                        <div class="category-card" data-category="services">
+                            <div class="category-icon">
+                                <i class="fas fa-tools"></i>
+                            </div>
+                            <span>Services</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Listings Section -->
+        <section id="listings" class="listings-section">
+            <div class="section-container">
+                <div class="section-header">
+                    <h2 class="section-title">Trending Listings</h2>
+                    <div class="section-controls">
+                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="trending">🔥 Trending</button>
+                        <button class="filter-btn" data-filter="new">✨ New</button>
+                        <button class="filter-btn" data-filter="verified">✅ Verified</button>
+                    </div>
+                </div>
+                
+                <div class="listings-grid" id="listingsGrid">
+                    <!-- Listings will be dynamically generated -->
+                </div>
+                
+                <div class="load-more-container">
+                    <button class="load-more-btn glass-card" id="loadMoreBtn">
+                        <span>Load More</span>
+                        <i class="fas fa-arrow-down"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Post Ad Section -->
+        <section id="post" class="post-section">
+            <div class="section-container">
+                <div class="section-header">
+                    <h2 class="section-title">Post Your Ad</h2>
+                    <p class="section-subtitle">Share your items with the world</p>
+                </div>
+                
+                <div class="post-form-container">
+                    <form class="post-form glass-card" id="postForm">
+                        <div class="form-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="progressFill"></div>
+                            </div>
+                            <div class="progress-steps">
+                                <span class="step active" data-step="1">Details</span>
+                                <span class="step" data-step="2">Images</span>
+                                <span class="step" data-step="3">Preview</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Step 1: Basic Details -->
+                        <div class="form-step active" data-step="1">
+                            <div class="form-group">
+                                <label class="floating-label">Title</label>
+                                <input type="text" name="title" required class="form-input">
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="floating-label">Category</label>
+                                    <select name="category" required class="form-input">
+                                        <option value="">Select Category</option>
+                                        <option value="electronics">Electronics</option>
+                                        <option value="fashion">Fashion</option>
+                                        <option value="vehicles">Vehicles</option>
+                                        <option value="real-estate">Real Estate</option>
+                                        <option value="jobs">Jobs</option>
+                                        <option value="services">Services</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="floating-label">Price</label>
+                                    <input type="number" name="price" required class="form-input" placeholder="0">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="floating-label">Description</label>
+                                <textarea name="description" required class="form-input" rows="4"></textarea>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="floating-label">Location</label>
+                                    <input type="text" name="location" required class="form-input">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="floating-label">Contact</label>
+                                    <input type="tel" name="contact" required class="form-input">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Step 2: Images -->
+                        <div class="form-step" data-step="2">
+                            <div class="image-upload-container">
+                                <div class="upload-area" id="uploadArea">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <p>Drag & drop images here or click to browse</p>
+                                    <input type="file" id="imageInput" multiple accept="image/*" hidden>
+                                </div>
+                                <div class="image-preview-grid" id="imagePreviewGrid"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Step 3: Preview -->
+                        <div class="form-step" data-step="3">
+                            <div class="preview-card glass-card" id="previewCard">
+                                <!-- Preview content will be generated -->
+                            </div>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-secondary" id="prevBtn">Previous</button>
+                            <button type="button" class="btn btn-primary" id="nextBtn">Next</button>
+                            <button type="submit" class="btn btn-success" id="submitBtn" style="display: none;">Post Ad</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Profile Section -->
+        <section id="profile" class="profile-section">
+            <div class="section-container">
+                <div class="profile-header glass-card">
+                    <div class="profile-avatar">
+                        <div class="avatar-circle">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="level-badge">
+                            <span>Lv. 5</span>
+                        </div>
+                    </div>
+                    
+                    <div class="profile-info">
+                        <h2 class="profile-name">Alex Chen</h2>
+                        <p class="profile-bio">Digital nomad & tech enthusiast</p>
+                        <div class="profile-stats">
+                            <div class="stat">
+                                <span class="stat-number">24</span>
+                                <span class="stat-label">Listings</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">156</span>
+                                <span class="stat-label">Views</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">89%</span>
+                                <span class="stat-label">Success</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="profile-badges">
+                        <div class="badge" title="Verified Seller">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="badge" title="Top Rated">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="badge" title="Quick Responder">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="profile-content">
+                    <div class="profile-tabs">
+                        <button class="tab-btn active" data-tab="activity">Activity</button>
+                        <button class="tab-btn" data-tab="listings">My Listings</button>
+                        <button class="tab-btn" data-tab="favorites">Favorites</button>
+                        <button class="tab-btn" data-tab="settings">Settings</button>
+                    </div>
+                    
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="activity">
+                            <div class="activity-chart glass-card">
+                                <h3>Monthly Activity</h3>
+                                <canvas id="activityChart"></canvas>
+                            </div>
+                        </div>
+                        
+                        <div class="tab-pane" id="listings">
+                            <div class="my-listings-grid" id="myListingsGrid">
+                                <!-- User's listings will be loaded here -->
+                            </div>
+                        </div>
+                        
+                        <div class="tab-pane" id="favorites">
+                            <div class="favorites-grid" id="favoritesGrid">
+                                <!-- Favorites will be loaded here -->
+                            </div>
+                        </div>
+                        
+                        <div class="tab-pane" id="settings">
+                            <div class="settings-form glass-card">
+                                <h3>Profile Settings</h3>
+                                <div class="form-group">
+                                    <label>Display Name</label>
+                                    <input type="text" value="Alex Chen" class="form-input">
+                                </div>
+                                <div class="form-group">
+                                    <label>Email</label>
+                                    <input type="email" value="alex@example.com" class="form-input">
+                                </div>
+                                <div class="form-group">
+                                    <label>Theme</label>
+                                    <select class="form-input">
+                                        <option value="neon">Neon</option>
+                                        <option value="cosmic">Cosmic</option>
+                                        <option value="soft">Soft</option>
+                                    </select>
+                                </div>
+                                <button class="btn btn-primary">Save Changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Toast Notifications -->
+    <div class="toast-container" id="toastContainer"></div>
+    
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner">
+            <div class="spinner-ring"></div>
+            <div class="spinner-ring"></div>
+            <div class="spinner-ring"></div>
+        </div>
+    </div>
+    
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html> 
