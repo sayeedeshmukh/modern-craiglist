@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jobs - Craigslist</title>
+    <meta name="description" content="Find jobs and career opportunities on Craigslist - Modern Classifieds Dashboard">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/gsap.min.js"></script>
+</head>
+<body>
+    <!-- Background Animation -->
+    <div class="background-animation" id="backgroundAnimation"></div>
+    
+    <!-- Sparkles Background -->
+    <div class="sparkles-container" id="sparklesContainer"></div>
+    
+    <!-- Navigation -->
+    <nav class="navbar glass-nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html" class="logo-text">
+                    <span class="logo-letter" data-letter="C">C</span>
+                    <span class="logo-letter" data-letter="r">r</span>
+                    <span class="logo-letter" data-letter="a">a</span>
+                    <span class="logo-letter" data-letter="i">i</span>
+                    <span class="logo-letter" data-letter="g">g</span>
+                    <span class="logo-letter" data-letter="s">s</span>
+                    <span class="logo-letter" data-letter="l">l</span>
+                    <span class="logo-letter" data-letter="i">i</span>
+                    <span class="logo-letter" data-letter="s">s</span>
+                    <span class="logo-letter" data-letter="t">t</span>
+                </a>
+            </div>
+            
+            <div class="nav-menu" id="navMenu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="electronics.html" class="nav-link">Electronics</a>
+                <a href="fashion.html" class="nav-link">Fashion</a>
+                <a href="vehicles.html" class="nav-link">Vehicles</a>
+                <a href="real-estate.html" class="nav-link">Real Estate</a>
+                <a href="jobs.html" class="nav-link active">Jobs</a>
+                <a href="services.html" class="nav-link">Services</a>
+                <a href="index.html#post" class="nav-link">Post Ad</a>
+            </div>
+            
+            <div class="nav-controls">
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Category Hero Section -->
+        <section class="hero-section">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <h1 class="hero-title">
+                        <span class="title-line">Jobs</span>
+                        <span class="title-line">Marketplace</span>
+                    </h1>
+                    <p class="hero-subtitle">Find your next career opportunity or hire talented professionals</p>
+                    
+                    <!-- Search Bar -->
+                    <div class="search-container">
+                        <div class="search-bar glass-card">
+                            <i class="fas fa-search search-icon"></i>
+                            <input type="text" placeholder="Search jobs..." class="search-input" id="searchInput">
+                            <button class="search-btn">
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Jobs Listings -->
+        <section class="listings-section">
+            <div class="section-container">
+                <div class="listings-container">
+                    <div class="listings-grid" id="jobsGrid">
+                        <!-- Dynamic Jobs Listings -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-sections">
+                <div class="footer-section">
+                    <h3 class="footer-title">Categories</h3>
+                    <ul class="footer-links">
+                        <li><a href="electronics.html">Electronics</a></li>
+                        <li><a href="fashion.html">Fashion</a></li>
+                        <li><a href="vehicles.html">Vehicles</a></li>
+                        <li><a href="real-estate.html">Real Estate</a></li>
+                        <li><a href="jobs.html">Jobs</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 class="footer-title">Support</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-brand">
+                    <div class="footer-logo metallic-paint" id="footerLogo">
+                        <span class="footer-logo-letter" data-letter="C">C</span>
+                        <span class="footer-logo-letter" data-letter="r">r</span>
+                        <span class="footer-logo-letter" data-letter="a">a</span>
+                        <span class="footer-logo-letter" data-letter="i">i</span>
+                        <span class="footer-logo-letter" data-letter="g">g</span>
+                        <span class="footer-logo-letter" data-letter="s">s</span>
+                        <span class="footer-logo-letter" data-letter="l">l</span>
+                        <span class="footer-logo-letter" data-letter="i">i</span>
+                        <span class="footer-logo-letter" data-letter="s">s</span>
+                        <span class="footer-logo-letter" data-letter="t">t</span>
+                    </div>
+                    <p class="footer-tagline">The future of classifieds</p>
+                </div>
+                
+                <div class="footer-copyright">
+                    <p>&copy; 2024 Craigslist. Made with love and magic</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    <script>
+        // Jobs-specific content
+        const jobsData = [
+            {
+                title: "Software Developer",
+                price: "₹12,00,000/year",
+                location: "Mumbai",
+                image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=400&q=80",
+                description: "Full-stack development, React, Node.js, 3+ years experience"
+            },
+            {
+                title: "Marketing Manager",
+                price: "₹8,50,000/year",
+                location: "Delhi",
+                image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=400&q=80",
+                description: "Digital marketing, Brand management, 5+ years experience"
+            },
+            {
+                title: "Data Scientist",
+                price: "₹15,00,000/year",
+                location: "Bangalore",
+                image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=400&q=80",
+                description: "Machine Learning, Python, SQL, 4+ years experience"
+            },
+            {
+                title: "UX Designer",
+                price: "₹9,00,000/year",
+                location: "Chennai",
+                image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=400&q=80",
+                description: "UI/UX design, Figma, Adobe Creative Suite, 3+ years"
+            },
+            {
+                title: "Sales Executive",
+                price: "₹6,00,000/year",
+                location: "Hyderabad",
+                image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=400&q=80",
+                description: "B2B sales, CRM, Excellent communication skills"
+            },
+            {
+                title: "Content Writer",
+                price: "₹5,50,000/year",
+                location: "Pune",
+                image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80",
+                description: "SEO content, Blog writing, 2+ years experience"
+            }
+        ];
+
+        function renderJobs() {
+            const grid = document.getElementById('jobsGrid');
+            grid.innerHTML = '';
+            
+            jobsData.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'listing-card';
+                card.innerHTML = `
+                    <div class="listing-image">
+                        <img src="${item.image}" alt="${item.title}">
+                    </div>
+                    <div class="listing-content">
+                        <div class="listing-title">${item.title}</div>
+                        <div class="listing-price">${item.price}</div>
+                        <div class="listing-location">${item.location}</div>
+                        <div class="listing-description">${item.description}</div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            renderJobs();
+            setupSparkles();
+        });
+    </script>
+</body>
+</html> 

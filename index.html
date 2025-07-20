@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NeoList - Modern Classifieds Dashboard</title>
-    <meta name="description" content="A futuristic, Gen Z-inspired classifieds platform with stunning visuals and cutting-edge UI/UX">
+    <title>Craigslist - Modern Classifieds Dashboard</title>
+    <meta name="description" content="A futuristic, Gen Z-inspired Craigslist platform with stunning visuals and cutting-edge UI/UX">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -32,25 +32,36 @@
     <!-- Background Animation -->
     <div class="background-animation" id="backgroundAnimation"></div>
     
+    <!-- Sparkles Background -->
+    <div class="sparkles-container" id="sparklesContainer"></div>
+    
     <!-- Navigation -->
     <nav class="navbar glass-nav">
         <div class="nav-container">
             <div class="nav-logo">
-                <h1 class="logo-text">NeoList</h1>
+                <h1 class="logo-text">
+                    <span class="logo-letter" data-letter="C">C</span>
+                    <span class="logo-letter" data-letter="r">r</span>
+                    <span class="logo-letter" data-letter="a">a</span>
+                    <span class="logo-letter" data-letter="i">i</span>
+                    <span class="logo-letter" data-letter="g">g</span>
+                    <span class="logo-letter" data-letter="s">s</span>
+                    <span class="logo-letter" data-letter="l">l</span>
+                    <span class="logo-letter" data-letter="i">i</span>
+                    <span class="logo-letter" data-letter="s">s</span>
+                    <span class="logo-letter" data-letter="t">t</span>
+                </h1>
                 <div class="logo-glow"></div>
             </div>
             
             <div class="nav-menu" id="navMenu">
                 <a href="#home" class="nav-link active">Home</a>
-                <a href="#listings" class="nav-link">Listings</a>
                 <a href="#post" class="nav-link">Post Ad</a>
                 <a href="#profile" class="nav-link">Profile</a>
             </div>
             
             <div class="nav-controls">
-                <button class="theme-toggle" id="themeToggle">
-                    <i class="fas fa-moon"></i>
-                </button>
+                <!-- Removed theme toggle button -->
                 <button class="mobile-menu-toggle" id="mobileMenuToggle">
                     <span></span>
                     <span></span>
@@ -87,72 +98,63 @@
                     
                     <!-- Category Grid -->
                     <div class="category-grid">
-                        <div class="category-card" data-category="electronics">
+                        <a href="electronics.html" class="category-card" data-category="electronics">
                             <div class="category-icon">
                                 <i class="fas fa-laptop"></i>
                             </div>
                             <span>Electronics</span>
-                        </div>
-                        <div class="category-card" data-category="fashion">
+                        </a>
+                        <a href="fashion.html" class="category-card" data-category="fashion">
                             <div class="category-icon">
                                 <i class="fas fa-tshirt"></i>
                             </div>
                             <span>Fashion</span>
-                        </div>
-                        <div class="category-card" data-category="vehicles">
+                        </a>
+                        <a href="vehicles.html" class="category-card" data-category="vehicles">
                             <div class="category-icon">
                                 <i class="fas fa-car"></i>
                             </div>
                             <span>Vehicles</span>
-                        </div>
-                        <div class="category-card" data-category="real-estate">
+                        </a>
+                        <a href="real-estate.html" class="category-card" data-category="real-estate">
                             <div class="category-icon">
                                 <i class="fas fa-home"></i>
                             </div>
                             <span>Real Estate</span>
-                        </div>
-                        <div class="category-card" data-category="jobs">
+                        </a>
+                        <a href="jobs.html" class="category-card" data-category="jobs">
                             <div class="category-icon">
                                 <i class="fas fa-briefcase"></i>
                             </div>
                             <span>Jobs</span>
-                        </div>
-                        <div class="category-card" data-category="services">
+                        </a>
+                        <a href="services.html" class="category-card" data-category="services">
                             <div class="category-icon">
                                 <i class="fas fa-tools"></i>
                             </div>
                             <span>Services</span>
-                        </div>
+                        </a>
                     </div>
                 </div>
             </div>
         </section>
         
-        <!-- Listings Section -->
-        <section id="listings" class="listings-section">
+        <!-- Featured Listings Section -->
+        <section class="listings-section">
             <div class="section-container">
                 <div class="section-header">
-                    <h2 class="section-title">Trending Listings</h2>
-                    <div class="section-controls">
-                        <button class="filter-btn active" data-filter="all">All</button>
-                        <button class="filter-btn" data-filter="trending">🔥 Trending</button>
-                        <button class="filter-btn" data-filter="new">✨ New</button>
-                        <button class="filter-btn" data-filter="verified">✅ Verified</button>
+                    <h2 class="section-title">Featured Listings</h2>
+                    <p class="section-subtitle">Discover amazing deals from our community</p>
+                </div>
+                
+                <div class="listings-container">
+                    <div class="listings-grid" id="featuredGrid">
+                        <!-- Dynamic Featured Listings -->
                     </div>
-                </div>
-                
-                <div class="listings-grid" id="listingsGrid">
-                    <!-- Listings will be dynamically generated -->
-                </div>
-                
-                <div class="load-more-container">
-                    <button class="load-more-btn glass-card" id="loadMoreBtn">
-                        <span>Load More</span>
-                        <i class="fas fa-arrow-down"></i>
-                    </button>
                 </div>
             </div>
         </section>
+        
         
         <!-- Post Ad Section -->
         <section id="post" class="post-section">
@@ -220,24 +222,7 @@
                             </div>
                         </div>
                         
-                        <!-- Step 2: Images -->
-                        <div class="form-step" data-step="2">
-                            <div class="image-upload-container">
-                                <div class="upload-area" id="uploadArea">
-                                    <i class="fas fa-cloud-upload-alt"></i>
-                                    <p>Drag & drop images here or click to browse</p>
-                                    <input type="file" id="imageInput" multiple accept="image/*" hidden>
-                                </div>
-                                <div class="image-preview-grid" id="imagePreviewGrid"></div>
-                            </div>
-                        </div>
                         
-                        <!-- Step 3: Preview -->
-                        <div class="form-step" data-step="3">
-                            <div class="preview-card glass-card" id="previewCard">
-                                <!-- Preview content will be generated -->
-                            </div>
-                        </div>
                         
                         <div class="form-actions">
                             <button type="button" class="btn btn-secondary" id="prevBtn">Previous</button>
@@ -263,7 +248,7 @@
                     </div>
                     
                     <div class="profile-info">
-                        <h2 class="profile-name">Alex Chen</h2>
+                        <h2 class="profile-name">Raj Dhillon</h2>
                         <p class="profile-bio">Digital nomad & tech enthusiast</p>
                         <div class="profile-stats">
                             <div class="stat">
@@ -307,12 +292,41 @@
                             <div class="activity-chart glass-card">
                                 <h3>Monthly Activity</h3>
                                 <canvas id="activityChart"></canvas>
+                                <div class="activity-stats">
+                                    <p><strong>Listings Posted:</strong> 8</p>
+                                    <p><strong>Messages Sent:</strong> 23</p>
+                                    <p><strong>Items Sold:</strong> 5</p>
+                                </div>
                             </div>
                         </div>
                         
                         <div class="tab-pane" id="listings">
                             <div class="my-listings-grid" id="myListingsGrid">
-                                <!-- User's listings will be loaded here -->
+                                <!-- Dummy listings -->
+                                <div class="listing-card">
+                                    <div class="listing-image"><img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80" alt="Phone"></div>
+                                    <div class="listing-content">
+                                        <div class="listing-title">iPhone 13 Pro Max</div>
+                                        <div class="listing-price">₹75,000</div>
+                                        <div class="listing-location">Chandigarh</div>
+                                    </div>
+                                </div>
+                                <div class="listing-card">
+                                    <div class="listing-image"><img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Bike"></div>
+                                    <div class="listing-content">
+                                        <div class="listing-title">Royal Enfield Classic 350</div>
+                                        <div class="listing-price">₹1,20,000</div>
+                                        <div class="listing-location">Mohali</div>
+                                    </div>
+                                </div>
+                                <div class="listing-card">
+                                    <div class="listing-image"><img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80" alt="Laptop"></div>
+                                    <div class="listing-content">
+                                        <div class="listing-title">Dell XPS 15</div>
+                                        <div class="listing-price">₹90,000</div>
+                                        <div class="listing-location">Panchkula</div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         
@@ -348,7 +362,86 @@
                 </div>
             </div>
         </section>
+        
+
     </main>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-sparkles" id="footerSparkles"></div>
+            <div class="footer-sections">
+                <div class="footer-section">
+                    <h3 class="footer-title">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#listings">Browse Listings</a></li>
+                        <li><a href="#post">Post Ad</a></li>
+                        <li><a href="#profile">My Profile</a></li>
+                        <li><a href="#profile">My Profile</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 class="footer-title">Categories</h3>
+                    <ul class="footer-links">
+                        <li><a href="#" data-category="electronics">Electronics</a></li>
+                        <li><a href="#" data-category="fashion">Fashion</a></li>
+                        <li><a href="#" data-category="vehicles">Vehicles</a></li>
+                        <li><a href="#" data-category="real-estate">Real Estate</a></li>
+                        <li><a href="#" data-category="jobs">Jobs</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 class="footer-title">Support</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Report Issue</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 class="footer-title">Connect</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
+                        <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+                        <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                        <li><a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+                        <li><a href="#"><i class="fab fa-github"></i> GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-brand">
+                    <div class="footer-logo metallic-paint" id="footerLogo">
+                        <span class="footer-logo-letter" data-letter="C">C</span>
+                        <span class="footer-logo-letter" data-letter="r">r</span>
+                        <span class="footer-logo-letter" data-letter="a">a</span>
+                        <span class="footer-logo-letter" data-letter="i">i</span>
+                        <span class="footer-logo-letter" data-letter="g">g</span>
+                        <span class="footer-logo-letter" data-letter="s">s</span>
+                        <span class="footer-logo-letter" data-letter="l">l</span>
+                        <span class="footer-logo-letter" data-letter="i">i</span>
+                        <span class="footer-logo-letter" data-letter="s">s</span>
+                        <span class="footer-logo-letter" data-letter="t">t</span>
+                    </div>
+                    <p class="footer-tagline">The future of classifieds</p>
+                </div>
+                <!-- Magnet Lines -->
+                <div class="magnet-lines-container" id="magnetLinesContainer">
+                    <div class="magnet-lines" id="magnetLines"></div>
+                </div>
+                <div class="footer-copyright">
+                    <p>&copy; 2024 Craigslist -Reimagined</p>
+                </div>
+            </div>
+        </div>
+    </footer>
     
     <!-- Toast Notifications -->
     <div class="toast-container" id="toastContainer"></div>
@@ -364,5 +457,83 @@
     
     <!-- Scripts -->
     <script src="script.js"></script>
+    <script>
+        // Featured listings data
+        const featuredData = [
+            {
+                title: "iPhone 15 Pro Max",
+                price: "₹1,25,000",
+                location: "Mumbai",
+                image: "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?auto=format&fit=crop&w=400&q=80",
+                category: "Electronics"
+            },
+            {
+                title: "Nike Air Jordan 1",
+                price: "₹12,000",
+                location: "Delhi",
+                image: "https://images.unsplash.com/photo-1549298916-b41d501d3772?auto=format&fit=crop&w=400&q=80",
+                category: "Fashion"
+            },
+            {
+                title: "Honda City",
+                price: "₹8,50,000",
+                location: "Bangalore",
+                image: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=400&q=80",
+                category: "Vehicles"
+            },
+            {
+                title: "2BHK Apartment",
+                price: "₹85,00,000",
+                location: "Chennai",
+                image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=400&q=80",
+                category: "Real Estate"
+            },
+            {
+                title: "Software Developer",
+                price: "₹12,00,000/year",
+                location: "Hyderabad",
+                image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=400&q=80",
+                category: "Jobs"
+            },
+            {
+                title: "Plumbing Services",
+                price: "₹500/hour",
+                location: "Pune",
+                image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=400&q=80",
+                category: "Services"
+            }
+        ];
+
+        function renderFeaturedListings() {
+            const grid = document.getElementById('featuredGrid');
+            if (!grid) return;
+            
+            grid.innerHTML = '';
+            
+            featuredData.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'listing-card';
+                card.innerHTML = `
+                    <div class="listing-image">
+                        <img src="${item.image}" alt="${item.title}">
+                        <div class="listing-badges">
+                            <span class="listing-badge">${item.category}</span>
+                        </div>
+                    </div>
+                    <div class="listing-content">
+                        <div class="listing-title">${item.title}</div>
+                        <div class="listing-price">${item.price}</div>
+                        <div class="listing-location">${item.location}</div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Initialize dynamic content
+        document.addEventListener('DOMContentLoaded', function() {
+            renderFeaturedListings();
+        });
+    </script>
 </body>
 </html> 
