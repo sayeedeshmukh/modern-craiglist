@@ -6,36 +6,25 @@
     <title>Craigslist - Modern Classifieds Dashboard</title>
     <meta name="description" content="A futuristic, Gen Z-inspired Craigslist platform with stunning visuals and cutting-edge UI/UX">
     
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     
-    <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Styles -->
     <link rel="stylesheet" href="styles.css">
     
-    <!-- Three.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    
-    <!-- GSAP -->
+    <script src="https://cdn.jsdelivr.net/npm/ogl@0.0.41/dist/ogl.umd.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/ScrollTrigger.min.js"></script>
 </head>
 <body>
-    <!-- Custom Cursor -->
+    <div id="particlesBackground"></div>
     <div class="custom-cursor" id="customCursor"></div>
     <div class="cursor-trail" id="cursorTrail"></div>
-    
-    <!-- Background Animation -->
     <div class="background-animation" id="backgroundAnimation"></div>
-    
-    <!-- Sparkles Background -->
     <div class="sparkles-container" id="sparklesContainer"></div>
-    
-    <!-- Navigation -->
     <nav class="navbar glass-nav">
         <div class="nav-container">
             <div class="nav-logo">
@@ -53,15 +42,12 @@
                 </h1>
                 <div class="logo-glow"></div>
             </div>
-            
             <div class="nav-menu" id="navMenu">
                 <a href="#home" class="nav-link active">Home</a>
                 <a href="#post" class="nav-link">Post Ad</a>
                 <a href="#profile" class="nav-link">Profile</a>
             </div>
-            
             <div class="nav-controls">
-                <!-- Removed theme toggle button -->
                 <button class="mobile-menu-toggle" id="mobileMenuToggle">
                     <span></span>
                     <span></span>
@@ -70,10 +56,7 @@
             </div>
         </div>
     </nav>
-    
-    <!-- Main Content -->
     <main class="main-content">
-        <!-- Hero Section -->
         <section id="home" class="hero-section">
             <div class="hero-container">
                 <div class="hero-content">
@@ -83,8 +66,6 @@
                         <span class="title-line">Deals</span>
                     </h1>
                     <p class="hero-subtitle">The future of classifieds is here. Buy, sell, and connect in style.</p>
-                    
-                    <!-- Search Bar -->
                     <div class="search-container">
                         <div class="search-bar glass-card">
                             <i class="fas fa-search search-icon"></i>
@@ -95,8 +76,6 @@
                         </div>
                         <div class="search-suggestions" id="searchSuggestions"></div>
                     </div>
-                    
-                    <!-- Category Grid -->
                     <div class="category-grid">
                         <a href="electronics.html" class="category-card" data-category="electronics">
                             <div class="category-icon">
@@ -138,32 +117,24 @@
                 </div>
             </div>
         </section>
-        
-        <!-- Featured Listings Section -->
         <section class="listings-section">
             <div class="section-container">
                 <div class="section-header">
                     <h2 class="section-title">Featured Listings</h2>
                     <p class="section-subtitle">Discover amazing deals from our community</p>
                 </div>
-                
                 <div class="listings-container">
                     <div class="listings-grid" id="featuredGrid">
-                        <!-- Dynamic Featured Listings -->
                     </div>
                 </div>
             </div>
         </section>
-        
-        
-        <!-- Post Ad Section -->
         <section id="post" class="post-section">
             <div class="section-container">
                 <div class="section-header">
                     <h2 class="section-title">Post Your Ad</h2>
                     <p class="section-subtitle">Share your items with the world</p>
                 </div>
-                
                 <div class="post-form-container">
                     <form class="post-form glass-card" id="postForm">
                         <div class="form-progress">
@@ -176,14 +147,11 @@
                                 <span class="step" data-step="3">Preview</span>
                             </div>
                         </div>
-                        
-                        <!-- Step 1: Basic Details -->
                         <div class="form-step active" data-step="1">
                             <div class="form-group">
                                 <label class="floating-label">Title</label>
                                 <input type="text" name="title" required class="form-input">
                             </div>
-                            
                             <div class="form-row">
                                 <div class="form-group">
                                     <label class="floating-label">Category</label>
@@ -197,33 +165,26 @@
                                         <option value="services">Services</option>
                                     </select>
                                 </div>
-                                
                                 <div class="form-group">
                                     <label class="floating-label">Price</label>
                                     <input type="number" name="price" required class="form-input" placeholder="0">
                                 </div>
                             </div>
-                            
                             <div class="form-group">
                                 <label class="floating-label">Description</label>
                                 <textarea name="description" required class="form-input" rows="4"></textarea>
                             </div>
-                            
                             <div class="form-row">
                                 <div class="form-group">
                                     <label class="floating-label">Location</label>
                                     <input type="text" name="location" required class="form-input">
                                 </div>
-                                
                                 <div class="form-group">
                                     <label class="floating-label">Contact</label>
                                     <input type="tel" name="contact" required class="form-input">
                                 </div>
                             </div>
                         </div>
-                        
-                        
-                        
                         <div class="form-actions">
                             <button type="button" class="btn btn-secondary" id="prevBtn">Previous</button>
                             <button type="button" class="btn btn-primary" id="nextBtn">Next</button>
@@ -233,8 +194,6 @@
                 </div>
             </div>
         </section>
-        
-        <!-- Profile Section -->
         <section id="profile" class="profile-section">
             <div class="section-container">
                 <div class="profile-header glass-card">
@@ -246,7 +205,6 @@
                             <span>Lv. 5</span>
                         </div>
                     </div>
-                    
                     <div class="profile-info">
                         <h2 class="profile-name">Raj Dhillon</h2>
                         <p class="profile-bio">Digital nomad & tech enthusiast</p>
@@ -265,7 +223,6 @@
                             </div>
                         </div>
                     </div>
-                    
                     <div class="profile-badges">
                         <div class="badge" title="Verified Seller">
                             <i class="fas fa-check-circle"></i>
@@ -278,7 +235,6 @@
                         </div>
                     </div>
                 </div>
-                
                 <div class="profile-content">
                     <div class="profile-tabs">
                         <button class="tab-btn active" data-tab="activity">Activity</button>
@@ -286,7 +242,6 @@
                         <button class="tab-btn" data-tab="favorites">Favorites</button>
                         <button class="tab-btn" data-tab="settings">Settings</button>
                     </div>
-                    
                     <div class="tab-content">
                         <div class="tab-pane active" id="activity">
                             <div class="activity-chart glass-card">
@@ -299,10 +254,8 @@
                                 </div>
                             </div>
                         </div>
-                        
                         <div class="tab-pane" id="listings">
                             <div class="my-listings-grid" id="myListingsGrid">
-                                <!-- Dummy listings -->
                                 <div class="listing-card">
                                     <div class="listing-image"><img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80" alt="Phone"></div>
                                     <div class="listing-content">
@@ -329,13 +282,10 @@
                                 </div>
                             </div>
                         </div>
-                        
                         <div class="tab-pane" id="favorites">
                             <div class="favorites-grid" id="favoritesGrid">
-                                <!-- Favorites will be loaded here -->
                             </div>
                         </div>
-                        
                         <div class="tab-pane" id="settings">
                             <div class="settings-form glass-card">
                                 <h3>Profile Settings</h3>
@@ -362,11 +312,7 @@
                 </div>
             </div>
         </section>
-        
-
     </main>
-    
-    <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-sparkles" id="footerSparkles"></div>
@@ -381,7 +327,6 @@
                         <li><a href="#profile">My Profile</a></li>
                     </ul>
                 </div>
-                
                 <div class="footer-section">
                     <h3 class="footer-title">Categories</h3>
                     <ul class="footer-links">
@@ -392,7 +337,6 @@
                         <li><a href="#" data-category="jobs">Jobs</a></li>
                     </ul>
                 </div>
-                
                 <div class="footer-section">
                     <h3 class="footer-title">Support</h3>
                     <ul class="footer-links">
@@ -403,7 +347,6 @@
                         <li><a href="#">Report Issue</a></li>
                     </ul>
                 </div>
-                
                 <div class="footer-section">
                     <h3 class="footer-title">Connect</h3>
                     <ul class="footer-links">
@@ -415,7 +358,6 @@
                     </ul>
                 </div>
             </div>
-            
             <div class="footer-bottom">
                 <div class="footer-brand">
                     <div class="footer-logo metallic-paint" id="footerLogo">
@@ -432,7 +374,6 @@
                     </div>
                     <p class="footer-tagline">The future of classifieds</p>
                 </div>
-                <!-- Magnet Lines -->
                 <div class="magnet-lines-container" id="magnetLinesContainer">
                     <div class="magnet-lines" id="magnetLines"></div>
                 </div>
@@ -442,11 +383,7 @@
             </div>
         </div>
     </footer>
-    
-    <!-- Toast Notifications -->
     <div class="toast-container" id="toastContainer"></div>
-    
-    <!-- Loading Overlay -->
     <div class="loading-overlay" id="loadingOverlay">
         <div class="loading-spinner">
             <div class="spinner-ring"></div>
@@ -454,11 +391,8 @@
             <div class="spinner-ring"></div>
         </div>
     </div>
-    
-    <!-- Scripts -->
     <script src="script.js"></script>
     <script>
-        // Featured listings data
         const featuredData = [
             {
                 title: "iPhone 15 Pro Max",
@@ -507,9 +441,7 @@
         function renderFeaturedListings() {
             const grid = document.getElementById('featuredGrid');
             if (!grid) return;
-            
             grid.innerHTML = '';
-            
             featuredData.forEach(item => {
                 const card = document.createElement('div');
                 card.className = 'listing-card';
@@ -529,8 +461,6 @@
                 grid.appendChild(card);
             });
         }
-
-        // Initialize dynamic content
         document.addEventListener('DOMContentLoaded', function() {
             renderFeaturedListings();
         });
